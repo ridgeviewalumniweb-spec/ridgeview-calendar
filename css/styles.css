@@ -432,10 +432,10 @@ h1 { font-size: 24px; }
   .print-title {
     display: block !important;
     text-align: center;
-    font-size: 20pt;
+    font-size: 16pt;
     font-weight: bold;
     color: #1a252f;
-    margin-bottom: 4px;
+    margin-bottom: 0;
   }
 
   #calendar, .legend-row { width: 100% !important; }
@@ -448,12 +448,19 @@ h1 { font-size: 24px; }
     width: 100% !important;
   }
 
-  /* Scale up calendar text to fill the page */
+  /* The calendar grows to fit its events (height: "auto"), so keep the
+     spacing tight enough that a 6-week month plus the legend still fits
+     on one landscape page. */
   .fc { font-size: 11pt !important; }
-  .fc-col-header-cell { font-size: 11pt !important; }
-  .fc-daygrid-day-number { font-size: 11pt !important; }
-  .fc-event { font-size: 9pt !important; padding: 3px 5px !important; }
-  .fc-toolbar-title { font-size: 16pt !important; }
+  .fc .fc-toolbar.fc-header-toolbar { margin-bottom: 4px !important; }
+  .fc-toolbar-title { font-size: 14pt !important; }
+  .fc-col-header-cell { font-size: 10pt !important; }
+  .fc .fc-daygrid-day-number { font-size: 9pt !important; padding: 1px 4px !important; }
+  .fc .fc-daygrid-day-events { margin-bottom: 2px !important; min-height: 0 !important; }
+  .fc .fc-daygrid-body-natural .fc-daygrid-day-events { margin-bottom: 2px !important; }
+  .fc .fc-daygrid-event-harness .fc-event { margin-top: 1px !important; }
+  .fc-event { font-size: 8pt !important; padding: 1px 4px !important; line-height: 1.15 !important; }
+  .first-friday-marker { font-size: 7pt !important; padding: 1px 4px 0 !important; }
 
   /* Align legend row to calendar's 7-column table layout */
   .legend-row {
@@ -462,11 +469,14 @@ h1 { font-size: 24px; }
     table-layout: fixed !important;
     border-collapse: separate !important;
     border-spacing: 4px 0 !important;
-    margin-top: 6px !important;
+    margin-top: 4px !important;
   }
   .legend-cell {
     display: table-cell !important;
-    font-size: 9pt !important;
+    font-size: 8pt !important;
+    padding: 4px 6px !important;
+    min-height: 0 !important;
+    line-height: 1.3 !important;
   }
 
   /* Force background colors to print */
