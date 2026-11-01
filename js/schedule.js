@@ -129,7 +129,10 @@ const isMobile = () => window.innerWidth < 768;
 // Shared FullCalendar configuration used by both pages.
 export const BASE_CALENDAR_OPTIONS = {
   initialView: isMobile() ? "listMonth" : "dayGridMonth",
-  height: isMobile() ? "auto" : undefined,
+  // "auto" lets the grid grow to fit every event. A fixed height made
+  // FullCalendar add an inner scrollbar that clipped the bottom row and
+  // squeezed the Saturday column off the right edge.
+  height: "auto",
   displayEventTime: false,
   eventDisplay: "block",
   dayMaxEvents: false,
@@ -143,7 +146,6 @@ export const BASE_CALENDAR_OPTIONS = {
   windowResize() {
     const mobile = isMobile();
     this.changeView(mobile ? "listMonth" : "dayGridMonth");
-    this.setOption("height", mobile ? "auto" : undefined);
     this.setOption("headerToolbar", mobile
       ? { left: "prev,next today", center: "title", right: "listMonth,listWeek" }
       : { left: "prev,next today", center: "title", right: "dayGridMonth,timeGridWeek" }
